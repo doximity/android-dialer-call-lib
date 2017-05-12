@@ -36,7 +36,7 @@ public class DialActivity extends AppCompatActivity {
             }
         });
 
-        //Format a phone number
+        //Format the phone number while user inputting
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mPhoneNumberEditText.addTextChangedListener(new PhoneNumberFormattingTextWatcher(Locale.getDefault().getCountry()));
         } else {

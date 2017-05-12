@@ -27,5 +27,12 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:design:25.3.1'
+
+    //Import CallWithDoxDialerLib directly into gradle
     compile 'com.github.doximity:android-dialer-call-lib:v0.1'
+
+    //You can also import CallWithDoxDialerLib as a new module
+    //compile project(':CallWithDoxDialerLib')
+
+
 }
