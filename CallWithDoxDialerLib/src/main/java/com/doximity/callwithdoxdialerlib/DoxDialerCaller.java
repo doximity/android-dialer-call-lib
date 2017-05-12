@@ -2,6 +2,7 @@ package com.doximity.callwithdoxdialerlib;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 
 /**
@@ -23,37 +24,33 @@ public class DoxDialerCaller {
      */
 
     public static boolean dialPhoneNumber(Context context, String phoneNumber) {
-        Intent intent = context.getPackageManager().getLaunchIntentForPackage(DOX_DIALER_PACKAGE_NAME);
-        if (intent == null) {
-            // Doximity Dialer app is not installed, redirect to Play Store
-            try {
+        PackageManager packageManager = context.getPackageManager();
+        Intent launchDialerIntent = packageManager.getLaunchIntentForPackage(DOX_DIALER_PACKAGE_NAME);
+        boolean doxDialerAppInstalled = launchDialerIntent != null;
+
+        if (doxDialerAppInstalled) {
+            launchDialerIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            launchDialerIntent.setAction(Intent.ACTION_DIAL);
+            launchDialerIntent.setData(Uri.parse("tel:" + phoneNumber));
+            if (launchDialerIntent.resolveActivity(context.getPackageManager()) != null) {
+                context.startActivity(launchDialerIntent);
+                return true;
+            }
+        } else {
+            Intent playStoreIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + DOX_DIALER_PACKAGE_NAME));
+            boolean playStoreInstalled = playStoreIntent.resolveActivity(packageManager) != null;
+            if (playStoreInstalled) {
                 //Open from AppsFlyer url for marketing purposes
                 String packageName = context.getPackageName();
                 String appsFlyerUrl = "https://app.appsflyer.com/" + DOX_DIALER_PACKAGE_NAME + "?pid=third_party_app&c=" + packageName;
-                intent = new Intent(Intent.ACTION_VIEW, Uri.parse(appsFlyerUrl));
-                context.startActivity(intent);
+                launchDialerIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(appsFlyerUrl));
+                context.startActivity(launchDialerIntent);
                 return true;
-            } catch (android.content.ActivityNotFoundException e) {
-                try {
-                    //Play Store is installed
-                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + DOX_DIALER_PACKAGE_NAME));
-                    context.startActivity(intent);
-                    return true;
-                } catch (android.content.ActivityNotFoundException exception) {
-                    //Play Store is not installed on user's device, open as a web link
-                    intent = new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("https://play.google.com/store/apps/details?id=" + DOX_DIALER_PACKAGE_NAME));
-                    context.startActivity(intent);
-                    return true;
-                }
-            }
-        } else {
-            // Doximity Dialer app is installed
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.setAction(Intent.ACTION_DIAL);
-            intent.setData(Uri.parse("tel:" + phoneNumber));
-            if (intent.resolveActivity(context.getPackageManager()) != null) {
-                context.startActivity(intent);
+            } else {
+                //Play Store is not installed on user's device, open as a web link
+                launchDialerIntent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://play.google.com/store/apps/details?id=" + DOX_DIALER_PACKAGE_NAME));
+                context.startActivity(launchDialerIntent);
                 return true;
             }
         }
