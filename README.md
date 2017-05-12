@@ -7,6 +7,8 @@
 <br />
 
 
+[![GitHub release](https://img.shields.io/github/release/doximity/android-dialer-call-lib.svg)](https://github.com/doximity/android-dialer-call-lib/releases) ![platforms](https://img.shields.io/badge/platforms-android-green.svg)
+
 ## What is CallWithDoxDialer?
 
 Doximity's [Dialer][] app lets healthcare professionals make phone calls to patients while on the go -- without revealing personal phone numbers. Calls are routed through Doximity's HIPPA-secure platform and relayed to the patient who will see the doctor's office number in the Caller ID. Doximity Dialer is currently available to verified physicians, nurse practitioners, physician assistants and pharmacists in the United States. 
@@ -25,7 +27,18 @@ A sample project which provides runnable code examples that demonstrate uses of 
 
 ## Download
 
-Method 1: Grab latest version via Gradle, just add the dependency to your app's `build.gradle` file:
+Method 1:
+Add JitPack repository in your root project build.gradle:
+```groovy
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
+Grab the latest version via Gradle, just add the dependency to your app's `build.gradle` file:
 ```groovy
 dependencies {  
     compile 'com.github.doximity:android-dialer-call-lib:v0.1'
@@ -58,7 +71,7 @@ Most reasonable phone number formats are accepted by the `dialPhoneNumber` metho
 
 ```java
    DoxDialerCaller.dialPhoneNumber(DialActivity.this, "4151234567");
-   DoxDialerCaller.dialPhoneNumber(DialActivity.this, "+(415)123-4567");
+   DoxDialerCaller.dialPhoneNumber(DialActivity.this, "+1(415)123-4567");
 ```
 
 
