@@ -13,19 +13,6 @@ import android.os.Build;
 public class DoxDialerCaller {
 
     private static final String DOX_DIALER_PACKAGE_NAME = "com.doximity.doxdialer";
-    private static DoxDialerCaller mInstance;
-
-    private DoxDialerCaller() {}
-
-    /**
-     * @return The DoxDialerCaller instance.
-     */
-    public static DoxDialerCaller shared() {
-        if (mInstance == null) {
-            mInstance = new DoxDialerCaller();
-        }
-        return mInstance;
-    }
 
     /**
      * @param phoneNumber The phone number to dial, as a String.
@@ -37,7 +24,7 @@ public class DoxDialerCaller {
      * @return true if Doximity Dialer app is successfully launched or Play Store link is successfully launched, otherwise false.
      */
 
-    public boolean dialPhoneNumber(Context context, String phoneNumber) {
+    public static boolean dialPhoneNumber(Context context, String phoneNumber) {
         Intent intent = context.getPackageManager().getLaunchIntentForPackage(DOX_DIALER_PACKAGE_NAME);
         if (intent == null) {
             // Doximity Dialer app is not installed, redirect to Play Store
@@ -79,7 +66,7 @@ public class DoxDialerCaller {
      * @param context The Context parameter, it's used to get the drawable resource.
      * @return The Doximity dialer icon drawable.
      */
-    public Drawable getDialerIcon(Context context) {
+    public static Drawable getDialerIcon(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return context.getDrawable(R.drawable.doximity_dialer_icon);
         } else {
