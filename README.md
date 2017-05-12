@@ -24,6 +24,9 @@ CallWithDoxDialer is a mobile library for Android that lets 3rd-party apps easil
 
 A sample project which provides runnable code examples that demonstrate uses of the classes in this project is available in the `/CallWithDoxDialerSample` folder. 
 
+![Dox Dialer installed](ReadMeResources/dox-dialer-installed.gif)
+![Dox Dialer not installed](ReadMeResources/dox-dialer-not-installed.gif)
+
 
 ## Download
 
@@ -31,11 +34,11 @@ Method 1:
 Add JitPack repository in your root project build.gradle:
 ```groovy
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 
 Grab the latest version via Gradle, just add the dependency to your app's `build.gradle` file:
