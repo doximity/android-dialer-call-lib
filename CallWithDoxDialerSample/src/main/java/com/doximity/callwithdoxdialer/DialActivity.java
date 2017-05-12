@@ -37,7 +37,7 @@ public class DialActivity extends AppCompatActivity {
         });
 
         //Set Dox Dialer icon
-        mDoxDialerButton.setImageDrawable(DoxDialerCaller.shared().getDialerIcon(DialActivity.this));
+        mDoxDialerButton.setImageDrawable(DoxDialerCaller.getDialerIcon(DialActivity.this));
 
         //Format a phone number
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -54,6 +54,6 @@ public class DialActivity extends AppCompatActivity {
     }
 
     private void dialOnDoxDialerApp(String phoneNumber) {
-        DoxDialerCaller.shared().dialPhoneNumber(DialActivity.this, phoneNumber);
+        DoxDialerCaller.dialPhoneNumber(DialActivity.this, phoneNumber);
     }
 }
