@@ -36,9 +36,6 @@ public class DialActivity extends AppCompatActivity {
             }
         });
 
-        //Set Dox Dialer icon
-        mDoxDialerButton.setImageDrawable(DoxDialerCaller.getDialerIcon(DialActivity.this));
-
         //Format a phone number
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mPhoneNumberEditText.addTextChangedListener(new PhoneNumberFormattingTextWatcher(Locale.getDefault().getCountry()));

@@ -2,9 +2,7 @@ package com.doximity.callwithdoxdialerlib;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 
 /**
  * Created by yinanoliver on 5/11/17.
@@ -60,17 +58,5 @@ public class DoxDialerCaller {
             }
         }
         return false;
-    }
-
-    /**
-     * @param context The Context parameter, it's used to get the drawable resource.
-     * @return The Doximity dialer icon drawable.
-     */
-    public static Drawable getDialerIcon(Context context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            return context.getDrawable(R.drawable.doximity_dialer_icon);
-        } else {
-            return context.getResources().getDrawable(R.drawable.doximity_dialer_icon);
-        }
     }
 }
