@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 
 /**
  * Created by yinanoliver on 5/11/17.
@@ -23,7 +24,7 @@ public class DoxDialerCaller {
      * @return true if Doximity Dialer app is successfully launched or Play Store link is successfully launched, otherwise false.
      */
 
-    public static boolean dialPhoneNumber(Context context, String phoneNumber) {
+    public static boolean dialPhoneNumber(@NonNull Context context, @NonNull String phoneNumber) {
         PackageManager packageManager = context.getPackageManager();
         Intent launchDialerIntent = packageManager.getLaunchIntentForPackage(DOX_DIALER_PACKAGE_NAME);
         boolean doxDialerAppInstalled = launchDialerIntent != null;
