@@ -42,16 +42,25 @@ public class DoxDialerCaller {
         if (intent == null) {
             // Doximity Dialer app is not installed, redirect to Play Store
             try {
-                //Play Store is installed
-                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + DOX_DIALER_PACKAGE_NAME));
+                //Open from AppsFlyer url for marketing purposes
+                String packageName = context.getPackageName();
+                String appsFlyerUrl = "https://app.appsflyer.com/" + DOX_DIALER_PACKAGE_NAME + "?pid=third_party_app&c=" + packageName;
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse(appsFlyerUrl));
                 context.startActivity(intent);
                 return true;
             } catch (android.content.ActivityNotFoundException e) {
-                //Play Store is not installed on user's device, open as a web link
-                intent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=" + DOX_DIALER_PACKAGE_NAME));
-                context.startActivity(intent);
-                return true;
+                try {
+                    //Play Store is installed
+                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + DOX_DIALER_PACKAGE_NAME));
+                    context.startActivity(intent);
+                    return true;
+                } catch (android.content.ActivityNotFoundException exception) {
+                    //Play Store is not installed on user's device, open as a web link
+                    intent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://play.google.com/store/apps/details?id=" + DOX_DIALER_PACKAGE_NAME));
+                    context.startActivity(intent);
+                    return true;
+                }
             }
         } else {
             // Doximity Dialer app is installed
