@@ -70,7 +70,7 @@ If the Doximity Dialer app is not installed, this call will direct the user to D
 Most reasonable phone number formats are accepted by the `dialPhoneNumber` method, e.g.:
 - using numbers only: `4151234567`
 - formatted: `(415)123-4567`
-- with a leading international area code: `+(415)123-4567`
+- with a leading international area code: `+1(415)123-4567`
 
 ```java
    DoxDialerCaller.dialPhoneNumber(DialActivity.this, "4151234567");
@@ -80,7 +80,7 @@ Most reasonable phone number formats are accepted by the `dialPhoneNumber` metho
 
 ### Icons
 The library also includes a version of the Doximity Dialer icon appropriate for use inside Button or ImageView.
-It's available `/DoxDialerIconDrawables` folder.
+It's available in the `/DoxDialerIconDrawables` folder.
 
 
 ## Have a question?
