@@ -12,7 +12,7 @@ import android.support.annotation.NonNull;
 
 public class DoxDialerCaller {
 
-    private static final String DOX_DIALER_PACKAGE_NAME = "com.doximity.doxdialer";
+    private static final String DOXIMITY_PACKAGE_NAME = "com.doximity.doximitydroid";
 
     /**
      * @param phoneNumber The phone number to dial, as a String.
@@ -26,7 +26,7 @@ public class DoxDialerCaller {
 
     public static boolean dialPhoneNumber(@NonNull Context context, @NonNull String phoneNumber) {
         PackageManager packageManager = context.getPackageManager();
-        Intent launchDialerIntent = packageManager.getLaunchIntentForPackage(DOX_DIALER_PACKAGE_NAME);
+        Intent launchDialerIntent = packageManager.getLaunchIntentForPackage(DOXIMITY_PACKAGE_NAME);
         boolean doxDialerAppInstalled = launchDialerIntent != null;
 
         if (doxDialerAppInstalled) {
@@ -38,19 +38,19 @@ public class DoxDialerCaller {
                 return true;
             }
         } else {
-            Intent playStoreIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + DOX_DIALER_PACKAGE_NAME));
+            Intent playStoreIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + DOXIMITY_PACKAGE_NAME));
             boolean playStoreInstalled = playStoreIntent.resolveActivity(packageManager) != null;
             if (playStoreInstalled) {
                 //Open from AppsFlyer url for marketing purposes
                 String packageName = context.getPackageName();
-                String appsFlyerUrl = "https://app.appsflyer.com/" + DOX_DIALER_PACKAGE_NAME + "?pid=third_party_app&c=" + packageName;
+                String appsFlyerUrl = "https://app.appsflyer.com/" + DOXIMITY_PACKAGE_NAME + "?pid=third_party_app&c=" + packageName;
                 launchDialerIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(appsFlyerUrl));
                 context.startActivity(launchDialerIntent);
                 return true;
             } else {
                 //Play Store is not installed on user's device, open as a web link
                 launchDialerIntent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://play.google.com/store/apps/details?id=" + DOX_DIALER_PACKAGE_NAME));
+                        Uri.parse("https://play.google.com/store/apps/details?id=" + DOXIMITY_PACKAGE_NAME));
                 context.startActivity(launchDialerIntent);
                 return true;
             }
