@@ -45,7 +45,7 @@
         android:focusable="true"
         android:focusableInTouchMode="true">
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
@@ -59,7 +59,7 @@
                 android:inputType="phone"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
             android:id="@+id/callButton"
