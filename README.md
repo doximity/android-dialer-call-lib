@@ -44,9 +44,10 @@ allprojects {
 Grab the latest version via Gradle, just add the dependency to your app's `build.gradle` file:
 ```groovy
 dependencies {  
-    compile 'com.github.doximity:android-dialer-call-lib:v1.0'
+    compile 'com.github.doximity:android-dialer-call-lib:vX.X'
 }
 ```
+(Note: You must replace X.X with the latest library version, which can be found here https://jitpack.io/#doximity/android-dialer-call-lib)
 
 Method 2: Download the library and import it as a module.
 in `Settings.gradle`
