@@ -7,7 +7,8 @@
 <br />
 
 
-[![GitHub release](https://img.shields.io/github/release/doximity/android-dialer-call-lib.svg)](https://github.com/doximity/android-dialer-call-lib/releases) ![platforms](https://img.shields.io/badge/platforms-android-green.svg)
+[![](https://jitpack.io/v/doximity/android-dialer-call-lib.svg)](https://jitpack.io/#doximity/android-dialer-call-lib)
+![platforms](https://img.shields.io/badge/platforms-android-green.svg)
 
 ## What is CallWithDoxDialer?
 
@@ -47,7 +48,9 @@ dependencies {
     compile 'com.github.doximity:android-dialer-call-lib:vX.X'
 }
 ```
-(Note: You must replace X.X with the latest library version, which can be found here https://jitpack.io/#doximity/android-dialer-call-lib)
+Note: You must replace X.X with the latest library version, which can be found here [![](https://jitpack.io/v/doximity/android-dialer-call-lib.svg)](https://jitpack.io/#doximity/android-dialer-call-lib) or via the link below 
+
+https://jitpack.io/#doximity/android-dialer-call-lib
 
 Method 2: Download the library and import it as a module.
 in `Settings.gradle`
