@@ -7,6 +7,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Dialpad
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.filled.Videocam
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -159,94 +163,63 @@ fun DoxDialerSampleScreen() {
         Spacer(modifier = Modifier.height(32.dp))
 
         // Action Buttons
-        Text(
-            text = stringResource(R.string.action_buttons_header),
-            fontSize = 16.sp,
-            fontWeight = FontWeight.SemiBold,
-            modifier = Modifier.fillMaxWidth()
-        )
-
-        Spacer(modifier = Modifier.height(12.dp))
-
         // Prefill Dialer Button
-        Button(
+        DialerActionButton(
+            text = stringResource(R.string.button_prefill_dialer),
+            backgroundColor = MaterialTheme.colorScheme.primary,
             onClick = {
                 val numberToUse = if (phoneNumber.text.isNotBlank()) phoneNumber.text else samplePhoneNumber
                 DoxDialerCaller.dialPhoneNumber(context, numberToUse)
             },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = MaterialTheme.colorScheme.primary
-            )
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.doximity_dialer_icon),
-                contentDescription = null,
-                modifier = Modifier.size(24.dp)
-            )
-            Spacer(modifier = Modifier.width(12.dp))
-            Text(
-                text = stringResource(R.string.button_prefill_dialer),
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Medium
-            )
-        }
+            iconContent = {
+                Icon(
+                    imageVector = Icons.Filled.Dialpad,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier.size(24.dp)
+                )
+            }
+        )
 
         Spacer(modifier = Modifier.height(12.dp))
 
         // Start Voice Call Button
-        Button(
+        DialerActionButton(
+            text = stringResource(R.string.button_start_voice_call),
+            backgroundColor = Color(0xFF5CB85C),
             onClick = {
                 val numberToUse = if (phoneNumber.text.isNotBlank()) phoneNumber.text else samplePhoneNumber
                 DoxDialerCaller.startVoiceCall(context, numberToUse)
             },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF5CB85C)
-            )
-        ) {
-            Text(
-                text = "\uD83D\uDCDE",
-                fontSize = 20.sp
-            )
-            Spacer(modifier = Modifier.width(12.dp))
-            Text(
-                text = stringResource(R.string.button_start_voice_call),
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Medium
-            )
-        }
+            iconContent = {
+                Icon(
+                    imageVector = Icons.Filled.Phone,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier.size(24.dp)
+                )
+            }
+        )
 
         Spacer(modifier = Modifier.height(12.dp))
 
         // Start Video Call Button
-        Button(
+        DialerActionButton(
+            text = stringResource(R.string.button_start_video_call),
+            backgroundColor = Color(0xFF9C27B0),
             onClick = {
                 val numberToUse = if (phoneNumber.text.isNotBlank()) phoneNumber.text else samplePhoneNumber
                 DoxDialerCaller.startVideoCall(context, numberToUse)
             },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color(0xFF9C27B0)
-            )
-        ) {
-            Text(
-                text = "\uD83D\uDCF9",
-                fontSize = 20.sp
-            )
-            Spacer(modifier = Modifier.width(12.dp))
-            Text(
-                text = stringResource(R.string.button_start_video_call),
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Medium
-            )
-        }
+            iconContent = {
+                Icon(
+                    imageVector = Icons.Filled.Videocam,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier.size(24.dp)
+                )
+            }
+        )
 
         Spacer(modifier = Modifier.height(24.dp))
 
@@ -275,6 +248,32 @@ fun DoxDialerSampleScreen() {
                 )
             }
         }
+    }
+}
+
+@Composable
+private fun DialerActionButton(
+    text: String,
+    backgroundColor: Color,
+    onClick: () -> Unit,
+    iconContent: @Composable () -> Unit
+) {
+    Button(
+        onClick = onClick,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(56.dp),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = backgroundColor
+        )
+    ) {
+        iconContent()
+        Spacer(modifier = Modifier.width(12.dp))
+        Text(
+            text = text,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Medium
+        )
     }
 }
 
