@@ -72,15 +72,15 @@ object DoxDialerCaller {
 
             when (type) {
                 CallType.VOICE_PREFILL -> {
-                    setData("doximity://dialer/call&target_number=$phoneNumber".toUri())
+                    setData("https://www.doximity.com/dialer/call?target_number=$phoneNumber".toUri())
                 }
 
                 CallType.VOICE_DIAL -> {
-                    setData("doximity://dialer/call/voice?target_number=$phoneNumber".toUri())
+                    setData("https://www.doximity.com/dialer/call/voice?target_number=$phoneNumber".toUri())
                 }
 
                 CallType.VIDEO_DIAL -> {
-                    setData("doximity://dialer/call/video?target_number=$phoneNumber".toUri())
+                    setData("https://www.doximity.com/dialer/call/video?target_number=$phoneNumber".toUri())
                 }
             }
         }?.let { intent ->

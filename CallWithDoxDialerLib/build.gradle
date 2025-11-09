@@ -4,11 +4,11 @@ apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     namespace "com.doximity.callwithdoxdialerlib"
-    compileSdk 35
+    compileSdk 36
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 35

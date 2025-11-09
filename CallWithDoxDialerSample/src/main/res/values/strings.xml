@@ -1,6 +1,27 @@
 <resources>
-    <string name="app_name">Call with Dox Dialer</string>
-    <string name="phone_number_text">Phone Number</string>
-    <string name="sample_phone_number">(123)456-7890</string>
-    <string name="click_me">&lt;-Click on Me</string>
+    <string name="app_name">Dox Dialer Sample</string>
+
+    <!-- Main Screen -->
+    <string name="app_title">Doximity Dialer Sample</string>
+    <string name="app_subtitle">Test DoxDialerCaller Library Features</string>
+    <string name="icon_description">Doximity Dialer Icon</string>
+
+    <!-- Sample Number Section -->
+    <string name="sample_number">(650) 233-3444</string>
+    <string name="sample_number_label">Sample Number</string>
+    <string name="sample_number_hint">Tap buttons below to test with this number</string>
+
+    <!-- Phone Input -->
+    <string name="phone_input_label">Enter Phone Number</string>
+    <string name="phone_input_placeholder">(555) 123-4567</string>
+
+    <!-- Action Buttons -->
+    <string name="action_buttons_header">Test with Sample Number:</string>
+    <string name="button_prefill_dialer">Prefill Dialer</string>
+    <string name="button_start_voice_call">Start Voice Call</string>
+    <string name="button_start_video_call">Start Video Call</string>
+
+    <!-- Feature Descriptions -->
+    <string name="feature_descriptions_header">Feature Descriptions:</string>
+    <string name="feature_descriptions_content">• Prefill Dialer: Opens Doximity with number prefilled, user chooses call type\n• Voice Call: Immediately starts a voice call\n• Video Call: Immediately starts a video call</string>
 </resources>
