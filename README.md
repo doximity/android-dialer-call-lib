@@ -46,7 +46,7 @@ dependencyResolutionManagement {
 Then add the dependency to your app's `build.gradle.kts`:
 ```kotlin
 dependencies {
-    implementation("com.github.doximity:android-dialer-call-lib:vX.X")
+    implementation("com.github.doximity:android-dialer-call-lib:vX.X.X")
 }
 ```
 
@@ -66,12 +66,12 @@ allprojects {
 Add the dependency:
 ```groovy
 dependencies {
-    implementation 'com.github.doximity:android-dialer-call-lib:vX.X'
+    implementation 'com.github.doximity:android-dialer-call-lib:vX.X.X'
 }
 ```
 </details>
 
-**Note:** Replace `X.X` with the latest version from https://jitpack.io/#doximity/android-dialer-call-lib
+**Note:** Replace `X.X.X` with the latest version from https://jitpack.io/#doximity/android-dialer-call-lib
 
 **Method 2: Local Module**
 
