@@ -7,7 +7,7 @@
 <br />
 
 
-[![GitHub release](https://img.shields.io/github/release/doximity/android-dialer-call-lib.svg)](https://github.com/doximity/android-dialer-call-lib/releases) ![platforms](https://img.shields.io/badge/platforms-android-green.svg)
+![platforms](https://img.shields.io/badge/platforms-android-green.svg)
 
 ## What is CallWithDoxDialer?
 
@@ -22,7 +22,7 @@ CallWithDoxDialer is a mobile library for Android that lets 3rd-party apps easil
 
 ## Sample App
 
-A sample project which provides runnable code examples that demonstrate uses of the classes in this project is available in the `/CallWithDoxDialerSample` folder. 
+A sample project which provides runnable code examples that demonstrate uses of the class in this library is available in the `/CallWithDoxDialerSample` folder. 
 
 ![Dox Dialer installed](ReadMeResources/dox-dialer-installed.gif)
 ![Dox Dialer not installed](ReadMeResources/dox-dialer-not-installed.gif)
@@ -30,8 +30,30 @@ A sample project which provides runnable code examples that demonstrate uses of 
 
 ## Download
 
-Method 1:
-Add JitPack repository in your root project build.gradle:
+**Method 1: Using JitPack**
+
+Add JitPack repository in your `settings.gradle.kts`:
+```kotlin
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://jitpack.io") }
+    }
+}
+```
+
+Then add the dependency to your app's `build.gradle.kts`:
+```kotlin
+dependencies {
+    implementation("com.github.doximity:android-dialer-call-lib:vX.X.X")
+}
+```
+
+<details>
+<summary>Using Groovy (build.gradle)</summary>
+
+Add JitPack repository in your root `build.gradle`:
 ```groovy
 allprojects {
     repositories {
@@ -41,42 +63,71 @@ allprojects {
 }
 ```
 
-Grab the latest version via Gradle, just add the dependency to your app's `build.gradle` file:
+Add the dependency:
 ```groovy
-dependencies {  
-    compile 'com.github.doximity:android-dialer-call-lib:vX.X'
+dependencies {
+    implementation 'com.github.doximity:android-dialer-call-lib:vX.X.X'
 }
 ```
-(Note: You must replace X.X with the latest library version, which can be found here https://jitpack.io/#doximity/android-dialer-call-lib)
+</details>
 
-Method 2: Download the library and import it as a module.
-in `Settings.gradle`
-```groovy
-include ':YourApp', ':CallWithDoxDialerLib'
+**Note:** Replace `X.X.X` with the latest version from https://jitpack.io/#doximity/android-dialer-call-lib
+
+**Method 2: Local Module**
+
+In `settings.gradle.kts`:
+```kotlin
+include(":YourApp", ":CallWithDoxDialerLib")
 ```
 
-then add the dependency to your app's `build.gradle` file:
-```groovy
-dependencies {  
-    compile project(':CallWithDoxDialerLib')
+Then add the dependency to your app's `build.gradle.kts`:
+```kotlin
+dependencies {
+    implementation(project(":CallWithDoxDialerLib"))
 }
 ```
 
 ## Using CallWithDoxDialer
 
 ### Core Functionality
-To initiate a call using Doximity Dialer, simply call the `DoxDialerCaller.dialPhoneNumber(Context context, String phoneNumber)` method.
-If the Doximity Dialer app is not installed, this call will direct the user to Doximity Dialer on the Play Store.
 
-Most reasonable phone number formats are accepted by the `dialPhoneNumber` method, e.g.:
+CallWithDoxDialer provides three functions for initiating calls through Doximity Dialer. First, get an instance of the DoxDialerCaller:
+
+```kotlin
+val doxDialer = DoxDialerCaller.getInstance()
+```
+
+#### 1. Prefill the Dialer Dialpad
+To prefill the Doximity Dialer dialpad with a phone number and let the user choose the communication type (voice, video, or text), call:
+```kotlin
+doxDialer.dialPhoneNumber(context: Context, phoneNumber: String): Boolean
+```
+
+This opens Doximity Dialer with the number prefilled, allowing the user to select their preferred communication method.
+
+#### 2. Start an Immediate Voice Call
+To immediately initiate a voice call through Doximity Dialer, call:
+```kotlin
+doxDialer.startVoiceCall(context: Context, phoneNumber: String): Boolean
+```
+
+This bypasses the dialer screen and starts a voice call directly.
+
+#### 3. Start an Immediate Video Call
+To immediately initiate a video call through Doximity Dialer, call:
+```kotlin
+doxDialer.startVideoCall(context: Context, phoneNumber: String): Boolean
+```
+
+This bypasses the dialer screen and starts a video call directly.
+
+**Note:** If the Doximity Dialer app is not installed, all functions will direct the user to Doximity Dialer on the Play Store. All functions return true if the Doximity app is launched or if the Play Store is opened, and false otherwise.
+
+### Supported Phone Number Formats
+All methods accept most reasonable phone number formats, e.g.:
 - using numbers only: `4151234567`
 - formatted: `(415)123-4567`
 - with a leading international area code: `+1(415)123-4567`
-
-```java
-   DoxDialerCaller.dialPhoneNumber(DialActivity.this, "4151234567");
-   DoxDialerCaller.dialPhoneNumber(DialActivity.this, "+1(415)123-4567");
-```
 
 
 ### Icons
