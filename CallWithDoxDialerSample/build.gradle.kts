@@ -19,7 +19,6 @@ android {
         targetSdk = 35
         versionCode = 3
         versionName = "2.0.0"
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -56,15 +55,9 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
-    // Testing
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.1.0") {
-        exclude(group = "com.android.support", module = "support-annotations")
-    }
-    testImplementation("junit:junit:4.13.2")
-
     // Import CallWithDoxDialerLib as a local module to test new features
-    implementation(project(":CallWithDoxDialerLib"))
+    // implementation(project(":CallWithDoxDialerLib"))
 
     // You can also import CallWithDoxDialerLib directly from GitHub
-    // implementation("com.github.doximity:android-dialer-call-lib:v2.0.0")
+    implementation("com.github.doximity:android-dialer-call-lib:v2.0.0")
 }
