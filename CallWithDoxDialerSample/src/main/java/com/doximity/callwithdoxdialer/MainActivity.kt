@@ -169,7 +169,7 @@ fun DoxDialerSampleScreen() {
             backgroundColor = MaterialTheme.colorScheme.primary,
             onClick = {
                 val numberToUse = if (phoneNumber.text.isNotBlank()) phoneNumber.text else samplePhoneNumber
-                DoxDialerCaller.dialPhoneNumber(context, numberToUse)
+                DoxDialerCaller.getInstance().dialPhoneNumber(context, numberToUse)
             },
             iconContent = {
                 Icon(
@@ -189,7 +189,7 @@ fun DoxDialerSampleScreen() {
             backgroundColor = Color(0xFF5CB85C),
             onClick = {
                 val numberToUse = if (phoneNumber.text.isNotBlank()) phoneNumber.text else samplePhoneNumber
-                DoxDialerCaller.startVoiceCall(context, numberToUse)
+                DoxDialerCaller.getInstance().startVoiceCall(context, numberToUse)
             },
             iconContent = {
                 Icon(
@@ -209,7 +209,7 @@ fun DoxDialerSampleScreen() {
             backgroundColor = Color(0xFF9C27B0),
             onClick = {
                 val numberToUse = if (phoneNumber.text.isNotBlank()) phoneNumber.text else samplePhoneNumber
-                DoxDialerCaller.startVideoCall(context, numberToUse)
+                DoxDialerCaller.getInstance().startVideoCall(context, numberToUse)
             },
             iconContent = {
                 Icon(

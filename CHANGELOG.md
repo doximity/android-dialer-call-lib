@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 - New `startVideoCall()` function to immediately initiate a video call through Doximity Dialer
 - Kotlin support - library now written in Kotlin
 - Return type documentation for all functions (Boolean indicating success/failure)
+- Interface-based architecture with `DoxDialerCaller` interface and internal implementation
 
 ### Changed
 - Complete rewrite of library in Kotlin (Java interop maintained)
@@ -18,6 +19,7 @@ All notable changes to this project will be documented in this file.
 - **BREAKING**: Target SDK version updated to 35
 - **BREAKING**: Compile SDK version updated to 36
 - **BREAKING**: JVM target updated from 11 to 17
+- **BREAKING**: API usage now requires calling `DoxDialerCaller.getInstance()` to get instance
 - Sample app rewritten in Kotlin with Jetpack Compose
 - Sample app updated to use Material Design 3
 - Build configuration migrated from Groovy to Kotlin DSL (`.gradle.kts`)

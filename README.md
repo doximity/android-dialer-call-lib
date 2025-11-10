@@ -7,7 +7,7 @@
 <br />
 
 
-[![GitHub release](https://img.shields.io/github/release/doximity/android-dialer-call-lib.svg)](https://github.com/doximity/android-dialer-call-lib/releases) ![platforms](https://img.shields.io/badge/platforms-android-green.svg)
+![platforms](https://img.shields.io/badge/platforms-android-green.svg)
 
 ## What is CallWithDoxDialer?
 
@@ -91,12 +91,16 @@ dependencies {
 
 ### Core Functionality
 
-CallWithDoxDialer provides three functions for initiating calls through Doximity Dialer:
+CallWithDoxDialer provides three functions for initiating calls through Doximity Dialer. First, get an instance of the DoxDialerCaller:
+
+```kotlin
+val doxDialer = DoxDialerCaller.getInstance()
+```
 
 #### 1. Prefill the Dialer Dialpad
 To prefill the Doximity Dialer dialpad with a phone number and let the user choose the communication type (voice, video, or text), call:
 ```kotlin
-fun dialPhoneNumber(context: Context, phoneNumber: String): Boolean
+doxDialer.dialPhoneNumber(context: Context, phoneNumber: String): Boolean
 ```
 
 This opens Doximity Dialer with the number prefilled, allowing the user to select their preferred communication method.
@@ -104,7 +108,7 @@ This opens Doximity Dialer with the number prefilled, allowing the user to selec
 #### 2. Start an Immediate Voice Call
 To immediately initiate a voice call through Doximity Dialer, call:
 ```kotlin
-fun startVoiceCall(context: Context, phoneNumber: String): Boolean
+doxDialer.startVoiceCall(context: Context, phoneNumber: String): Boolean
 ```
 
 This bypasses the dialer screen and starts a voice call directly.
@@ -112,7 +116,7 @@ This bypasses the dialer screen and starts a voice call directly.
 #### 3. Start an Immediate Video Call
 To immediately initiate a video call through Doximity Dialer, call:
 ```kotlin
-fun startVideoCall(context: Context, phoneNumber: String): Boolean
+doxDialer.startVideoCall(context: Context, phoneNumber: String): Boolean
 ```
 
 This bypasses the dialer screen and starts a video call directly.
