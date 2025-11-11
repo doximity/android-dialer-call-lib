@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [2.0.0] - 2025-11-10
+## [2.0.1] - 2025-11-10
 
 ### Added
 - New `startVoiceCall()` function to immediately initiate a voice call through Doximity Dialer
@@ -65,8 +65,8 @@ All notable changes to this project will be documented in this file.
 - Sample app demonstrating library usage
 - Support for Android API 19+
 
-[Unreleased]: https://github.com/doximity/android-dialer-call-lib/compare/v2.0.0...HEAD
-[2.0.0]: https://github.com/doximity/android-dialer-call-lib/compare/v1.1.1...v2.0.0
+[Unreleased]: https://github.com/doximity/android-dialer-call-lib/compare/v2.0.1...HEAD
+[2.0.1]: https://github.com/doximity/android-dialer-call-lib/compare/v1.1.1...v2.0.1
 [1.1.1]: https://github.com/doximity/android-dialer-call-lib/compare/v1.1...v1.1.1
 [1.1.0]: https://github.com/doximity/android-dialer-call-lib/compare/v1.0...v1.1
 [1.0.0]: https://github.com/doximity/android-dialer-call-lib/releases/tag/v1.0
