@@ -56,8 +56,8 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     // Import CallWithDoxDialerLib as a local module to test new features
-    // implementation(project(":CallWithDoxDialerLib"))
+    implementation(project(":CallWithDoxDialerLib"))
 
     // You can also import CallWithDoxDialerLib directly from GitHub
-    implementation("com.github.doximity:android-dialer-call-lib:v2.0.0")
+    // implementation("com.github.doximity:android-dialer-call-lib:v2.0.0")
 }
